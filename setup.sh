@@ -14,7 +14,15 @@ git clone git@github.com:bpmn-io/moddle-xml.git
 git clone git@github.com:jylups/cmmn-js.git
 git clone git@github.com:jylups/cmmn-moddle.git
 git clone git@github.com:jylups/camunda-cmmn-moddle.git
+git clone git@github.com:jylups/cmmn-js-properties-panel-flowable.git
+
 echo done.
+
+echo setup cmmn-js-properties-panel-flowable
+
+cd $base/cmmn-js-properties-panel-flowable
+npm install
+npm link
 
 echo setup camunda-cmmn-moddle
 
