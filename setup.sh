@@ -13,9 +13,14 @@ git clone git@github.com:bpmn-io/moddle.git
 git clone git@github.com:bpmn-io/moddle-xml.git
 git clone git@github.com:jylups/cmmn-js.git
 git clone git@github.com:jylups/cmmn-moddle.git
-
+git clone git@github.com:jylups/camunda-cmmn-moddle.git
 echo done.
 
+echo setup camunda-cmmn-moddle
+
+cd $base/camunda-cmmn-moddle
+npm install
+npm link
 
 echo setup diagram-js
 
