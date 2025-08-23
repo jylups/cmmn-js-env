@@ -23,7 +23,7 @@ cmmn-js-env/
 ├── diagram-js/                    # Diagramming toolkit
 ├── moddle/                        # Base moddle library
 ├── moddle-xml/                    # XML parsing for moddle
-└── WORKSPACE_DEVELOPMENT_GUIDE.md # This guide
+└── README.md # This guide
 ```
 
 ## Setup Instructions
