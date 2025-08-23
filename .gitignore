@@ -2,12 +2,24 @@
 
 # Compiled output
 /dist
+*/dist
 /tmp
 /out-tsc
 /bazel-out
+/build
+*/build
+/coverage
+*/coverage
+
+# Generated build artifacts
+*.bundled.js*
+*.tmp-browserify-*
+**/*.bundled.js*
+**/*.tmp-browserify-*
 
 # Node
 /node_modules
+*/node_modules
 npm-debug.log
 yarn-error.log
 
