@@ -6,6 +6,10 @@
 
 base=`pwd`
 
+cd $base/flowable-cmmn-moddle
+npm install
+npm link
+
 echo setup cmmn-js-properties-panel-flowable
 
 cd $base/cmmn-js-properties-panel-flowable
