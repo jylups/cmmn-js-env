@@ -1,0 +1,31 @@
+{
+  "name": "cmmn-js-workspace",
+  "version": "1.0.0",
+  "description": "Workspace for cmmn-js development with examples",
+  "private": true,
+  "workspaces": [
+    "cmmn-js",
+    "cmmn-js-examples/bundling",
+    "cmmn-js-examples/properties-panel",
+    "cmmn-moddle",
+    "diagram-js",
+    "moddle",
+    "moddle-xml"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "build:cmmn-js": "npm run distro --workspace=cmmn-js",
+    "test:cmmn-js": "npm run test --workspace=cmmn-js",
+    "dev:bundling": "npm run dev --workspace=cmmn-js-examples-bundling",
+    "dev:properties-panel": "npm run dev --workspace=cmmn-js-examples-properties-panel",
+    "lint:all": "npm run lint --workspaces",
+    "test:all": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  }
+}

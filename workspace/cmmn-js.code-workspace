@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../cmmn-js"
+		},
+		{
+			"path": "../cmmn-moddle"
+		},
+		{
+			"path": "../diagram-js"
+		},
+		{
+			"path": "../moddle"
+		},
+		{
+			"path": "../moddle-xml"
+		},
+		{
+			"path": "../cmmn-js-examples"
+		}
+	],
+	"settings": {}
+}
