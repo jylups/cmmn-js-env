@@ -1,0 +1,25 @@
+{
+  "name": "cmmn-playground",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Playground for viewing and editing Flowable CMMN with the local cmmn-js packages",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "cmmn-js": "^0.20.0",
+    "cmmn-js-properties-panel-flowable": "^1.1.0",
+    "flowable-cmmn-moddle": "^1.2.0"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.5",
+    "html-webpack-plugin": "^5.6.8",
+    "less": "^4.9.1",
+    "less-loader": "^13.1.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.3.1",
+    "webpack-dev-server": "^6.1.0"
+  }
+}

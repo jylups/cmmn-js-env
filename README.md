@@ -32,6 +32,29 @@ root, and builds `cmmn-js/dist` (`npm run build`), whose assets the properties
 panel tests load. Run `npm install` at the root again after changing a
 package's dependencies, and `npm run build` after changing `cmmn-js`.
 
+## Playground
+
+```bash
+npm run dev
+```
+
+Opens a dev server at http://localhost:8080 with the local `cmmn-js`, Flowable
+properties panel and `flowable-cmmn-moddle`:
+
+- pick a sample (taken from the packages' test fixtures), open a `.cmmn` file or
+  drop one on the page
+- switch between the viewer and the modeler with the Flowable properties panel
+- the **Exported XML** tab shows the diagram as `cmmn-js` saves it, updated on
+  every change; edit it and use **Import XML from editor** to load it back
+- the **Import warnings** tab lists everything the import reported
+- **Download XML** saves the exported XML
+
+Editing source in any of the packages rebuilds and reloads the page, and the
+current diagram is kept across reloads. The playground is bundled with
+webpack, which handles the CommonJS sources of `cmmn-js` and the properties
+panel directly. `cmmn-js/dist` must exist (`npm run build`), because the
+playground loads its CSS from there.
+
 ## Check the links
 
 ```bash
