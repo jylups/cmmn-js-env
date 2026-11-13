@@ -6,11 +6,13 @@
     "cmmn-moddle",
     "flowable-cmmn-moddle",
     "cmmn-js",
-    "cmmn-js-properties-panel-flowable"
+    "cmmn-js-properties-panel-flowable",
+    "playground"
   ],
   "scripts": {
     "build": "npm run distro --workspace cmmn-js",
     "lint": "npm run lint --workspaces --if-present",
-    "test": "npm test --workspaces --if-present"
+    "test": "npm test --workspaces --if-present",
+    "dev": "npm run dev --workspace playground"
   }
 }

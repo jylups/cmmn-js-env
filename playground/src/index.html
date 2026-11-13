@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+  <header class="toolbar">
+    <strong class="title">Flowable CMMN playground</strong>
+
+    <label>
+      Sample
+      <select id="sample"></select>
+    </label>
+
+    <button type="button" id="open">Open file…</button>
+    <input type="file" id="file" accept=".cmmn,.xml" hidden>
+
+    <div class="mode" role="group" aria-label="Mode">
+      <button type="button" data-mode="viewer">Viewer</button>
+      <button type="button" data-mode="modeler">Modeler</button>
+    </div>
+
+    <button type="button" id="download">Download XML</button>
+
+    <span id="status" class="status"></span>
+  </header>
+
+  <main class="layout">
+    <section class="canvas-area">
+      <div id="canvas" class="canvas"></div>
+      <div id="properties" class="properties"></div>
+      <div class="drop-hint">Drop a .cmmn file to open it</div>
+    </section>
+
+    <section class="bottom">
+      <nav class="tabs">
+        <button type="button" data-tab="xml">Exported XML</button>
+        <button type="button" data-tab="warnings">Import warnings <span id="warning-count"></span></button>
+        <button type="button" id="import-xml" class="tab-action">Import XML from editor</button>
+      </nav>
+
+      <textarea id="xml" class="pane" data-pane="xml" spellcheck="false"></textarea>
+      <ol id="warnings" class="pane" data-pane="warnings"></ol>
+    </section>
+  </main>
+</body>
+</html>
