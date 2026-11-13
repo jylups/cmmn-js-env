@@ -1,13 +1,20 @@
 {
 	"folders": [
 		{
-			"path": "../cmmn-js-properties-panel-flowable"
+			"name": "cmmn-js-env",
+			"path": ".."
 		},
 		{
-			"path": "../cmmn-js-examples/properties-panel"
+			"path": "../cmmn-js"
+		},
+		{
+			"path": "../cmmn-moddle"
 		},
 		{
 			"path": "../flowable-cmmn-moddle"
+		},
+		{
+			"path": "../cmmn-js-properties-panel-flowable"
 		}
 	],
 	"settings": {}
