@@ -46,3 +46,7 @@ Local packages show as `-> ./<folder>`.
 npm test --workspace cmmn-js-properties-panel-flowable
 npm run lint --workspaces --if-present
 ```
+
+The karma browser tests run in the installed Google Chrome (headless). Set
+`CHROME_BIN` to use a different Chrome or Chromium binary, and `TEST_BROWSERS`
+(for example `ChromeHeadless,Firefox`) to pick other browsers.
