@@ -1,0 +1,16 @@
+{
+  "name": "cmmn-js-env",
+  "private": true,
+  "description": "Development workspace for the Flowable CMMN viewer and editor packages",
+  "workspaces": [
+    "cmmn-moddle",
+    "flowable-cmmn-moddle",
+    "cmmn-js",
+    "cmmn-js-properties-panel-flowable"
+  ],
+  "scripts": {
+    "build": "npm run distro --workspace cmmn-js",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm test --workspaces --if-present"
+  }
+}

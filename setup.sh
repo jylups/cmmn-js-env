@@ -1,80 +1,41 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###
-# Setup script to be executed in a bpmn.io project root (some empty folder chosen by YOU)
+# Sets up the cmmn-js development workspace.
+#
+# Run it from the root of a cmmn-js-env checkout. It clones the package
+# repositories next to this script (skipping any that already exist) and
+# installs everything with npm workspaces, so the packages use each other's
+# local sources instead of the published versions.
 ###
 
-base=`pwd`
+set -euo pipefail
 
-echo cloning repositories
+cd "$(dirname "$0")"
 
-git clone git@github.com:bpmn-io/diagram-js.git
-git clone git@github.com:bpmn-io/moddle.git
-git clone git@github.com:bpmn-io/moddle-xml.git
-git clone git@github.com:jylups/cmmn-js.git
-git clone git@github.com:jylups/cmmn-moddle.git
-git clone git@github.com:jylups/camunda-cmmn-moddle.git
-git clone git@github.com:jylups/cmmn-js-properties-panel-flowable.git
-git clone git@github.com:jylups/flowable-cmmn-moddle.git
+clone() {
+  local repo=$1 branch=$2
 
-echo done.
+  if [ -d "$repo/.git" ]; then
+    echo "$repo already cloned (on branch $(git -C "$repo" branch --show-current)), skipping"
+  else
+    git clone --branch "$branch" "git@github.com:jylups/$repo.git"
+  fi
+}
 
-echo setup flowable-cmmn-moddle
+echo "cloning repositories"
 
-cd $base/flowable-cmmn-moddle
+clone cmmn-moddle master
+clone flowable-cmmn-moddle main
+clone cmmn-js master
+clone cmmn-js-properties-panel-flowable master
+
+echo "installing workspace dependencies"
+
 npm install
-npm link
 
-cd $base/cmmn-js-properties-panel-flowable
-npm install
-npm link
+echo "building cmmn-js dist (assets used by the properties panel tests)"
 
-echo setup camunda-cmmn-moddle
+npm run build
 
-cd $base/camunda-cmmn-moddle
-npm install
-npm link
-
-echo setup diagram-js
-
-cd $base/diagram-js
-npm install
-npm link
-
-
-echo setup moddle
-
-cd $base/moddle
-npm install
-npm link
-
-
-echo setup moddle-xml
-
-cd $base/moddle-xml
-npm link moddle
-npm install
-npm link
-
-
-echo setup cmmn-moddle
-
-cd $base/cmmn-moddle
-npm link moddle-xml
-npm link moddle
-npm install
-npm link
-
-
-echo setup cmmn-js
-
-cd $base/cmmn-js
-npm install
-npm link diagram-js
-npm link cmmn-moddle
-npm link
-
-
-cd $base
-
-echo all done.
+echo "all done."
