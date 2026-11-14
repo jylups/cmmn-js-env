@@ -1,12 +1,12 @@
 'use strict';
 
-require('cmmn-js/dist/assets/diagram-js.css');
-require('cmmn-js/dist/assets/cmmn-font/css/cmmn-embedded.css');
+require('@jylups/cmmn-js/dist/assets/diagram-js.css');
+require('@jylups/cmmn-js/dist/assets/cmmn-font/css/cmmn-embedded.css');
 require('cmmn-js-properties-panel-flowable/styles/properties.less');
 require('./styles.css');
 
-var CmmnViewer = require('cmmn-js/lib/NavigatedViewer'),
-    CmmnModeler = require('cmmn-js/lib/Modeler');
+var CmmnViewer = require('@jylups/cmmn-js/lib/NavigatedViewer'),
+    CmmnModeler = require('@jylups/cmmn-js/lib/Modeler');
 
 var propertiesPanelModule = require('cmmn-js-properties-panel-flowable'),
     flowablePropertiesProviderModule = require('cmmn-js-properties-panel-flowable/lib/provider/flowable');
