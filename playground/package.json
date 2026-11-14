@@ -8,7 +8,7 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
-    "cmmn-js": "^0.20.0",
+    "@jylups/cmmn-js": "^0.21.0",
     "cmmn-js-properties-panel-flowable": "^1.1.0",
     "flowable-cmmn-moddle": "^1.2.0"
   },

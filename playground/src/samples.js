@@ -57,11 +57,11 @@ module.exports = [
   {
     id: 'cmmn-simple',
     label: 'CMMN: simple',
-    xml: require('cmmn-js/test/fixtures/cmmn/simple.cmmn')
+    xml: require('@jylups/cmmn-js/test/fixtures/cmmn/simple.cmmn')
   },
   {
     id: 'cmmn-complex',
     label: 'CMMN: complex',
-    xml: require('cmmn-js/test/fixtures/cmmn/complex.cmmn')
+    xml: require('@jylups/cmmn-js/test/fixtures/cmmn/complex.cmmn')
   }
 ];

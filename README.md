@@ -5,12 +5,16 @@ Development workspace for the Flowable CMMN viewer and editor packages. It is an
 repositories are cloned into this folder and installed together, so each package
 uses its siblings' local sources instead of the published versions.
 
-| Folder | Repository | Branch |
-|---|---|---|
-| `cmmn-moddle` | [jylups/cmmn-moddle](https://github.com/jylups/cmmn-moddle) | `master` |
-| `flowable-cmmn-moddle` | [jylups/flowable-cmmn-moddle](https://github.com/jylups/flowable-cmmn-moddle) | `main` |
-| `cmmn-js` | [jylups/cmmn-js](https://github.com/jylups/cmmn-js) | `master` |
-| `cmmn-js-properties-panel-flowable` | [jylups/cmmn-js-properties-panel-flowable](https://github.com/jylups/cmmn-js-properties-panel-flowable) | `master` |
+| Folder | npm package | Repository | Branch |
+|---|---|---|---|
+| `cmmn-moddle` | `@jylups/cmmn-moddle` | [jylups/cmmn-moddle](https://github.com/jylups/cmmn-moddle) | `master` |
+| `flowable-cmmn-moddle` | `flowable-cmmn-moddle` | [jylups/flowable-cmmn-moddle](https://github.com/jylups/flowable-cmmn-moddle) | `main` |
+| `cmmn-js` | `@jylups/cmmn-js` | [jylups/cmmn-js](https://github.com/jylups/cmmn-js) | `master` |
+| `cmmn-js-properties-panel-flowable` | `cmmn-js-properties-panel-flowable` | [jylups/cmmn-js-properties-panel-flowable](https://github.com/jylups/cmmn-js-properties-panel-flowable) | `master` |
+
+`cmmn-moddle` and `cmmn-js` are maintained forks of the bpmn.io packages, which
+are no longer developed; they are published under the `@jylups` scope because
+the original names belong to bpmn.io on npm.
 
 The package folders are ignored by this repository's git; each one is its own
 repository.
