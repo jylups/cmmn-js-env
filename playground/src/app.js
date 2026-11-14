@@ -60,7 +60,9 @@ function createInstance(mode) {
 
   var options = {
     container: canvasEl,
-    keyboard: { bindTo: document },
+
+    // shortcuts work while the canvas has focus (click into the diagram)
+    keyboard: { bind: true },
     moddleExtensions: {
       flowable: flowableModdleDescriptor
     }
