@@ -10,7 +10,7 @@
   "dependencies": {
     "@jylups/cmmn-js": "^0.22.0-next.4",
     "cmmn-js-properties-panel-flowable": "^1.1.0",
-    "flowable-cmmn-moddle": "^1.2.0-next.1"
+    "flowable-cmmn-moddle": "^1.2.0-next.2"
   },
   "devDependencies": {
     "css-loader": "^7.1.5",
