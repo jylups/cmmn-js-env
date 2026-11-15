@@ -193,23 +193,43 @@ textarea.pane {
   background: var(--bg);
 }
 
-ol.pane {
-  padding: 8px 12px 8px 36px;
+div.pane.problems {
+  padding: 8px 12px;
 }
 
-ol.pane li {
+.problem-list {
+  margin: 0 0 8px;
+  padding-left: 24px;
+}
+
+.problem-list li {
   margin-bottom: 4px;
-  color: var(--warning);
 }
 
-ol.pane li.error {
+.problem-list.error li {
   color: var(--error);
-  font-weight: 600;
 }
 
-ol.pane li.empty {
-  list-style: none;
-  margin-left: -24px;
+.problem-list.info li {
+  color: var(--text-muted);
+}
+
+.problem-list li.selectable {
+  cursor: pointer;
+}
+
+.problem-list li.selectable:hover {
+  text-decoration: underline;
+}
+
+.problems summary {
+  cursor: pointer;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.problems .empty {
+  margin: 0;
   color: var(--text-muted);
 }
 

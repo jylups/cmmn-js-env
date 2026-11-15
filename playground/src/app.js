@@ -85,6 +85,11 @@ function createInstance(mode) {
     instance = new CmmnViewer(options);
   }
 
+  // a fixed problem leaves the list
+  instance.on('problems.changed', function() {
+    showProblems();
+  });
+
   body.setAttribute('data-mode', mode);
 }
 
@@ -92,8 +97,8 @@ function importXML(xml, source) {
   state.source = source;
   sampleEl.value = findSample(source) ? source : '';
 
-  instance.importXML(xml, function(err, warnings) {
-    showWarnings(err, warnings || []);
+  instance.importXML(xml, function(err) {
+    showProblems(err);
 
     if (err) {
       // keep the XML that failed so it can be fixed in the editor
@@ -105,10 +110,12 @@ function importXML(xml, source) {
 
     fitViewport();
 
+    var problemCount = countProblems('error');
+
     setStatus(
       'Opened ' + describeSource(source) +
-      (warnings && warnings.length ? ' with ' + warnings.length + ' warning(s)' : ''),
-      warnings && warnings.length ? 'warning' : 'ok'
+      (problemCount ? ' with ' + problemCount + ' problem(s)' : ''),
+      problemCount ? 'warning' : 'ok'
     );
 
     exportXML();
@@ -163,39 +170,108 @@ function switchMode(mode) {
 }
 
 
-// warnings and status
+// problems and status
 
-function showWarnings(err, warnings) {
-  var all = err ? [ err ].concat(warnings) : warnings;
+/**
+ * The problems of the opened model, from the problems service of cmmn-js:
+ * what is lost on save or not shown first, then, collapsed, what is kept
+ * but not recognised. Selecting a problem selects its element.
+ *
+ * @param {Error} [err] the error of a failed import
+ */
+function showProblems(err) {
+  var problems = getProblems(),
+      errors = problems.filter(function(problem) { return problem.severity === 'error'; }),
+      infos = problems.filter(function(problem) { return problem.severity !== 'error'; });
 
   warningsEl.innerHTML = '';
 
-  all.forEach(function(warning) {
-    var item = document.createElement('li');
+  if (err) {
+    warningsEl.appendChild(problemList([ { message: 'The file could not be opened: ' + err.message } ], 'error'));
+  }
 
-    item.textContent = warning.message || String(warning);
+  if (errors.length) {
+    warningsEl.appendChild(problemList(errors, 'error'));
+  }
 
-    if (warning === err) {
-      item.className = 'error';
-    }
+  if (infos.length) {
+    var details = document.createElement('details'),
+        summary = document.createElement('summary');
 
-    warningsEl.appendChild(item);
-  });
+    summary.textContent = infos.length + ' kept but not recognised';
 
-  if (!all.length) {
-    var empty = document.createElement('li');
+    details.appendChild(summary);
+    details.appendChild(problemList(infos, 'info'));
+
+    warningsEl.appendChild(details);
+  }
+
+  if (!err && !problems.length) {
+    var empty = document.createElement('p');
 
     empty.className = 'empty';
-    empty.textContent = 'No import warnings.';
+    empty.textContent = 'No problems.';
 
     warningsEl.appendChild(empty);
   }
 
-  warningCountEl.textContent = all.length ? '(' + all.length + ')' : '';
+  var count = errors.length + (err ? 1 : 0);
 
-  if (all.length) {
+  warningCountEl.textContent = count ? '(' + count + ')' : '';
+
+  if (count) {
     showTab('warnings');
   }
+}
+
+function problemList(problems, kind) {
+  var list = document.createElement('ol');
+
+  list.className = 'problem-list ' + kind;
+
+  problems.forEach(function(problem) {
+    var item = document.createElement('li');
+
+    item.textContent = problem.message;
+
+    if (problem.element) {
+      item.className = 'selectable';
+      item.title = 'Select ' + problem.element.id;
+
+      item.addEventListener('click', function() {
+        selectElement(problem.element);
+      });
+    }
+
+    list.appendChild(item);
+  });
+
+  return list;
+}
+
+function selectElement(element) {
+  var selection = instance.get('selection', false),
+      canvas = instance.get('canvas');
+
+  if (selection) {
+    selection.select(element);
+  }
+
+  if (canvas.scrollToElement) {
+    canvas.scrollToElement(element);
+  }
+}
+
+function getProblems() {
+  var problems = instance && instance.get('problems', false);
+
+  return problems ? problems.getProblems() : [];
+}
+
+function countProblems(severity) {
+  return getProblems().filter(function(problem) {
+    return problem.severity === severity;
+  }).length;
 }
 
 function setStatus(message, kind) {
@@ -233,6 +309,17 @@ function openFile(file) {
 }
 
 function download() {
+  var problems = instance && instance.get('problems', false),
+      removed = problems ? problems.getRemovedOnSave() : [];
+
+  if (removed.length && !window.confirm(
+    'Saving removes ' + removed.length + ' part(s) of this model:\n\n' +
+    removed.map(function(problem) { return '- ' + problem.message; }).join('\n') +
+    '\n\nDownload anyway?'
+  )) {
+    return;
+  }
+
   var name = findSample(state.source) ? state.source + '.cmmn' : String(state.source || 'diagram');
 
   if (!/\.(cmmn|xml)$/.test(name)) {
