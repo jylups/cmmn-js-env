@@ -10,9 +10,9 @@ module.exports = [
     xml: require('cmmn-js-properties-panel-flowable/test/spec/provider/flowable/HumanTask.cmmn')
   },
   {
-    id: 'flowable-case-execution-listener',
-    label: 'Flowable: case execution listener',
-    xml: require('cmmn-js-properties-panel-flowable/test/spec/provider/flowable/CaseExecutionListener.cmmn')
+    id: 'flowable-lifecycle-listeners',
+    label: 'Flowable: lifecycle listeners',
+    xml: require('cmmn-js-properties-panel-flowable/test/spec/provider/flowable/LifecycleListener.cmmn')
   },
   {
     id: 'flowable-task-listener',
@@ -20,9 +20,9 @@ module.exports = [
     xml: require('cmmn-js-properties-panel-flowable/test/spec/provider/flowable/TaskListener.cmmn')
   },
   {
-    id: 'flowable-variable-listener',
-    label: 'Flowable: variable listener',
-    xml: require('cmmn-js-properties-panel-flowable/test/spec/provider/flowable/VariableListener.cmmn')
+    id: 'flowable-not-read',
+    label: 'Flowable: parts Flowable does not read',
+    xml: require('cmmn-js-properties-panel-flowable/test/spec/provider/flowable/NotReadByFlowable.cmmn')
   },
   {
     id: 'flowable-listener-field-injection',
