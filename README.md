@@ -12,9 +12,9 @@ uses its siblings' local sources instead of the published versions.
 | `cmmn-js` | `@jylups/cmmn-js` | [jylups/cmmn-js](https://github.com/jylups/cmmn-js) | `master` |
 | `cmmn-js-properties-panel-flowable` | `cmmn-js-properties-panel-flowable` | [jylups/cmmn-js-properties-panel-flowable](https://github.com/jylups/cmmn-js-properties-panel-flowable) | `master` |
 
-`cmmn-moddle` and `cmmn-js` are maintained forks of the bpmn.io packages, which
+`cmmn-moddle` and `cmmn-js` are forks of the bpmn.io packages, which
 are no longer developed; they are published under the `@jylups` scope because
-the original names belong to bpmn.io on npm.
+the original names donot exist anymore on npm.
 
 The package folders are ignored by this repository's git; each one is its own
 repository.
