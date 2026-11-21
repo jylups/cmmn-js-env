@@ -2,11 +2,15 @@
 
 require('@jylups/cmmn-js/dist/assets/diagram-js.css');
 require('@jylups/cmmn-js/dist/assets/cmmn-font/css/cmmn-embedded.css');
+require('@jylups/cmmn-js/assets/cmmn-js-touch.css');
 require('cmmn-js-properties-panel-flowable/styles/properties.less');
 require('./styles.css');
 
 var CmmnViewer = require('@jylups/cmmn-js/lib/NavigatedViewer'),
     CmmnModeler = require('@jylups/cmmn-js/lib/Modeler');
+
+// touch editing turns itself on only on touch screens (jylups/cmmn-js-env#55)
+var touchModule = require('@jylups/cmmn-js/lib/features/touch');
 
 var propertiesPanelModule = require('cmmn-js-properties-panel-flowable'),
     flowablePropertiesProviderModule = require('cmmn-js-properties-panel-flowable/lib/provider/flowable');
@@ -71,7 +75,8 @@ function createInstance(mode) {
   if (mode === 'modeler') {
     options.additionalModules = [
       propertiesPanelModule,
-      flowablePropertiesProviderModule
+      flowablePropertiesProviderModule,
+      touchModule
     ];
 
     options.propertiesPanel = {
