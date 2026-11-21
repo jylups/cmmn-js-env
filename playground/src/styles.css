@@ -117,8 +117,13 @@ body[data-mode="modeler"] .mode [data-mode="modeler"] {
 
 .properties {
   width: 340px;
-  overflow: auto;
+  overflow: hidden;
   border-left: 1px solid var(--border);
+}
+
+/* the panel scrolls its open group itself; collapsed, only its rail is shown */
+.properties:has(.cpp-collapsed) {
+  width: auto;
 }
 
 body[data-mode="viewer"] .properties {
