@@ -69,6 +69,12 @@ function createInstance(mode) {
     keyboard: { bind: true },
     moddleExtensions: {
       flowable: flowableModdleDescriptor
+    },
+
+    // attributes Flowable reads in the Flowable namespace too, which moddle can't
+    // type next to the CMMN ones; the properties panel reads them
+    problems: {
+      ignoredAttributes: [ 'flowable:sentryRef', 'flowable:autoComplete', 'flowable:isBlocking' ]
     }
   };
 
