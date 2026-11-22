@@ -3,6 +3,7 @@
 require('@jylups/cmmn-js/dist/assets/diagram-js.css');
 require('@jylups/cmmn-js/dist/assets/cmmn-font/css/cmmn-embedded.css');
 require('@jylups/cmmn-js/assets/cmmn-js-touch.css');
+require('@jylups/cmmn-js/assets/cmmn-js-flowable.css');
 require('cmmn-js-properties-panel-flowable/styles/properties.less');
 require('./styles.css');
 
